@@ -1,7 +1,7 @@
 import React from "react";
 
 const TodoInput = (props) => {
-  const { handleAddTodos, todoValue, setTodoValue } = props;
+  const { handleAddTodos, todoValue, setTodoValue, todoStatus } = props;
 
   return (
     <header>
@@ -18,7 +18,7 @@ const TodoInput = (props) => {
           setTodoValue("");
         }}
       >
-        Add
+        {todoStatus ? "Edit" : "Add"}
       </button>
     </header>
   );
