@@ -5,6 +5,7 @@ import TodoList from "./components/TodoList";
 function App() {
   const [todos, setTodos] = useState([]);
   const [todoValue, setTodoValue] = useState("");
+  const [todoStatus, setTodoStatus] = useState(false);
 
   const persistData = (newData) => {
     localStorage.setItem("todos", JSON.stringify({ todos: newData }));
@@ -25,9 +26,11 @@ function App() {
     persistData(newList);
 
     setTodos(newList);
+    setTodoStatus(false);
   };
 
   const handleEditTodos = (index) => {
+    setTodoStatus(true);
     const valueEdit = todos[index];
     setTodoValue(valueEdit);
     handleDeleteTodos(index);
@@ -49,6 +52,7 @@ function App() {
         handleAddTodos={handleAddTodos}
         todoValue={todoValue}
         setTodoValue={setTodoValue}
+        todoStatus={todoStatus}
       />
       <TodoList
         handleDeleteTodos={handleDeleteTodos}
